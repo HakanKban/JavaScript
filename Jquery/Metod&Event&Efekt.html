@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        .renk {
+            color: red;
+        }
+        #box {
+            background-color: aqua;
+            height: 200px;
+            width: 150px;
+            position: absolute;
+            top: 660px;
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Text Metodu, Class ve özellik eklemek-->
+    <img src="https://images.unsplash.com/photo-1651535602931-74144887e487?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
+        height="150px" width="150px">
+    <a href="#"></a>
+    <h4 id="başlık">Metin Değiştir</h4>
+    <ul class="list">
+        <li id="deneme">Lorem, ipsum dolor.</li>
+        <li id="deneme2">Laborum, fugit qui.</li>
+        <li>Sequi, dolorem nostrum!</li>
+    </ul>
+    <input id="ad" type="text" placeholder="adınız">
+    <input id="Soyad" type="text" placeholder="Soyadınız">
+    <button id="btn-kayitOl" onclick="kayitol() ">Kayıt Ol1</button>
+    <button id="btn-kayitOl2">Kayıt Ol2</button>
+    <!-- Form -->
+    <form >
+        <p>
+            Ad: <input type="text" class="control">
+        </p>
+        <p>
+            Öğrenim Durumu: 
+            <select class="control">
+                <option value="İlkOkul">İlkOkul</option>
+                <option value="OrtaOkul">OrtaOkul</option>
+                <option value="Lise">Lise</option>
+                <option value="Üniversite">Üniversite</option>
+            </select>
+        </p>
+    </form>
+    <!-- Show ve Hide kullanımı-->
+    <p id="paragraf">Show ve hide kullanımı</p>
+    <button id="show">Göster</button>
+    <button id="hide">Gizle</button>
+    <button id="togle">togle</button>
+     <br>
+     <br>
+
+
+    <!--SlideUp&Down-->
+    <div class="slide" >
+        <img src="https://images.unsplash.com/photo-1651535602931-74144887e487?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
+        height="150px" width="150px">
+
+    </div>
+    <button id="slide1">Slide Up</button>
+    <button id="slide2">Slide Down</button>
+    <button id="fade1">fadeIn</button>
+    <button id="fade2">fadeOut</button>
+    <br>
+    <br>
+
+    <!--Animasyon-->
+   <div id="box">
+
+   </div>
+   <br>
+   <br>
+   <button id="Animate">Animasyon</button>
+
+    <script>
+        // text metodu  
+        let metin = $("ul #deneme2").text();
+        console.log(metin)
+        $("#başlık").text("Değişen Başlık")
+
+        // KayıtOl1 butonu için
+        function kayitol() {
+
+            var ad = $("#ad").val(); // inputun değeri alındı.
+            var soyad = $("#Soyad").val();
+            console.log(`${ad} ${soyad} isimli kişi kayıt olmuştur. `)
+            $("#ad").addClass("renk") // class ekleme
+            $("img").attr("width", "350") // özellik ekleme
+        }
+
+        // fonksiyon kullanma Click event ile. Kayitol2 butonu için
+        $(function () {
+            $("#btn-kayitOl2").click(function () {
+                $("img").attr("width", "350")
+            }
+            )
+        })
+        // fonksiyon kullanma change eventi
+        $(function(){
+            $(".control").change(function() {
+               console.log($(this).val())
+            })
+        })
+       // Show ve Hide
+       $(function(){
+           $("#hide").click(function(){
+               $("#paragraf").hide(2000)             
+           })    
+           $("#show").click(function(){
+               $("#paragraf").show(2000,function(){
+                   alert("metod denemesi")
+               })
+           })
+           $("#togle").click(function(){
+               $("#paragraf").toggle()
+           })
+       })
+      // SlideUp-SlideDown
+      $(function(){
+        $("#slide1").click(function(){
+            $(".slide").slideUp(2000)
+        })
+        $("#slide2").click(function(){
+            $(".slide").slideDown(2000)
+        })
+        $("#fade1").click(function(){
+            $(".slide").fadeIn(2000)
+        })
+        $("#fade2").click(function(){
+            $(".slide").fadeOut(2000)
+        })
+
+      })
+      // Animasyon
+      $(function(){
+          $("#Animate").click(function(){
+              $("#box").animate({
+
+                left:"120px",
+                width:"200px",
+                height: "200px"
+              },3000)
+          })
+      })
+
+
+    </script>
+</body>
+
+</html>

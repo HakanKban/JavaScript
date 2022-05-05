@@ -1,0 +1,2 @@
+<h2>jQuery Ve ajax Çalışıyorum </h2>
+<p id="p1"> Güncellemeden bu veriyi çektim </p>
